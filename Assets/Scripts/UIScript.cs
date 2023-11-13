@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class UIScript : MonoBehaviour
 {
@@ -16,14 +17,14 @@ public class UIScript : MonoBehaviour
         if (PlayerPrefs.GetInt("sound") == 0)
         {           
             soundButton.GetComponent<Image>().sprite = turnOff;
-            
-           
+            GameObject.Find("Sound").GetComponent<AudioSource>().mute = true;
+
         }
         else
         {
-            
             soundButton.GetComponent<Image>().sprite = turnOn;
-            
+            GameObject.Find("Sound").GetComponent<AudioSource>().mute = false;
+
         }
         if (PlayerPrefs.GetInt("music") == 0)
         {
@@ -67,13 +68,19 @@ public class UIScript : MonoBehaviour
         if(PlayerPrefs.GetInt("sound")==0)
         {
             PlayerPrefs.SetInt("sound", 1);
-            soundButton.GetComponent<Image>().sprite = turnOn;         
+            soundButton.GetComponent<Image>().sprite = turnOn;   
+             GameObject.Find("Sound").GetComponent<AudioSource>().mute = false;
         }
         else
         {
             PlayerPrefs.SetInt("sound", 0);
-            soundButton.GetComponent<Image>().sprite = turnOff;            
+            soundButton.GetComponent<Image>().sprite = turnOff;
+            GameObject.Find("Sound").GetComponent<AudioSource>().mute = true;
         }
+    }
+    public void nextScene()
+    {
+        SceneManager.LoadScene("GameScene");
     }
     
 }

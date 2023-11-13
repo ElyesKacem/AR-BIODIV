@@ -6,7 +6,10 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/ColoringUi2.unity
+    path: Assets/Scenes/v2Menu Scene.unity
+    guid: c020948545fe04284a84946237874206
+  - enabled: 1
+    path: Assets/Scenes/GameScene.unity
     guid: 399d1e070e20d054a800c51716e3b6f1
   m_configObjects:
     Unity.XR.WindowsMR.Settings: {fileID: 11400000, guid: 744b813df90924c169af73489b8325de,
