@@ -1,9 +1,12 @@
 using System.Collections;
 using System.Collections.Generic;
+using UnityEditor;
 using UnityEngine;
+using UnityEngine.XR.OpenXR.Input;
 
 public class CollectibleOnClick : MonoBehaviour
 {
+    public GameObject prefab;
     private bool isClicked = false;
     private float jumpForce = 1f;
     private float shrinkSpeed = 0.005f;
@@ -35,6 +38,7 @@ public class CollectibleOnClick : MonoBehaviour
         if (transform.localScale.x <= 0f)
         {
             Destroy(gameObject);
+            Instantiate(prefab, transform.position, Quaternion.Euler(-90f,0f,0f));
         }
     }
 }
