@@ -13,6 +13,7 @@ public class ColoringBehaviour : MonoBehaviour
     private Texture2D brushTexture;
     private Texture2D canvasTexture;
     private RaycastHit hitInfo;
+    public static bool eraser = false;
 
     void Start()
     {
@@ -24,31 +25,47 @@ public class ColoringBehaviour : MonoBehaviour
 
     }
 
+    
+
     void Update()
     {
-        brushColor = brushColorObject.GetComponent<Image>().color;
-        brushSize = SizeSlider.value;
-        brushTexture = CreateBrushTexture((int)brushSize, brushColor);
-        if (Input.GetMouseButton(0))
+        if (eraser)
         {
-            Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
-            RaycastHit hitInfo;
-            if (Physics.Raycast(ray, out hitInfo))
-            {
-                //Debug.Log("touched obejct");
-                //Debug.Log(hitInfo.transform.name);
-
-                if (hitInfo.transform == transform)
-                {
-                    Debug.Log("hit obejct-----------------------------");
-                    Debug.Log(hitInfo.transform.name);
-                    Debug.Log("obejct-----------------------------");
-                    Debug.Log(transform.name);
-                    Paint(hitInfo.textureCoord);
-                }
-            }
-            Debug.DrawRay(ray.origin, ray.direction * 100, Color.green);
+            brushColor = Color.white;
         }
+        else
+        {
+            brushColor = brushColorObject.GetComponent<Image>().color;
+        }
+            brushSize = SizeSlider.value;
+            brushTexture = CreateBrushTexture((int)brushSize, brushColor);
+            if (Input.GetMouseButton(0))
+            {
+                Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+                RaycastHit hitInfo;
+                if (Physics.Raycast(ray, out hitInfo))
+                {
+                    //Debug.Log("touched obejct");
+                    //Debug.Log(hitInfo.transform.name);
+
+                    if (hitInfo.transform == transform)
+                    {
+                        Debug.Log("hit obejct-----------------------------");
+                        Debug.Log(hitInfo.transform.name);
+                        Debug.Log("obejct-----------------------------");
+                        Debug.Log(transform.name);
+                    
+                        Paint(hitInfo.textureCoord);                        
+                    
+                    if(hitInfo.transform.name== "ColorPalette_1")
+                    {
+                        eraser = false;
+                    }
+                    }
+                }
+                Debug.DrawRay(ray.origin, ray.direction * 100, Color.green);
+            }
+        
     }
 
     Texture2D CreateBrushTexture(int size, Color color)

@@ -192,6 +192,8 @@ public class ColorPaletteController : MonoBehaviour, IBeginDragHandler, IDragHan
         Vector2 dragVec = eventData.delta;
         Vector2 currentPos = eventData.position;
         Vector2 prevPos = currentPos - dragVec;
+
+        ColoringBehaviour.eraser = false;
         
         //calculate Saturation and Value change
         if (controlSV)

@@ -15,4 +15,8 @@ public class CalculScript : MonoBehaviour
     {
         archivment += 1;
     }
+    public void turnOnEraser()
+    {
+        ColoringBehaviour.eraser = true;
+    }
 }
