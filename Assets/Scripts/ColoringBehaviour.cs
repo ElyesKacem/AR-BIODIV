@@ -50,10 +50,7 @@ public class ColoringBehaviour : MonoBehaviour
 
                     if (hitInfo.transform == transform)
                     {
-                        Debug.Log("hit obejct-----------------------------");
-                        Debug.Log(hitInfo.transform.name);
-                        Debug.Log("obejct-----------------------------");
-                        Debug.Log(transform.name);
+                        
                     
                         Paint(hitInfo.textureCoord);                        
                     
@@ -63,7 +60,7 @@ public class ColoringBehaviour : MonoBehaviour
                     }
                     }
                 }
-                Debug.DrawRay(ray.origin, ray.direction * 100, Color.green);
+                //Debug.DrawRay(ray.origin, ray.direction * 100, Color.green);
             }
         
     }
