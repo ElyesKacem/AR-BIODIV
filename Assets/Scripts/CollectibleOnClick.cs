@@ -10,15 +10,22 @@ public class CollectibleOnClick : MonoBehaviour
 
     private void Update()
     {
-        if (Input.GetMouseButton(0))
+        if (Input.GetMouseButtonDown(0))
         {
-            isClicked = true;
+            Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+            RaycastHit hitInfo;
+            if (Physics.Raycast(ray, out hitInfo))
+            {
+                if (hitInfo.transform == transform)
+                {
+                    isClicked = true;
+                }
+            }
         }
-
         if (isClicked)
         {
             ShrinkAndDisappear();
-        }
+        };
     }
 
     private void ShrinkAndDisappear()

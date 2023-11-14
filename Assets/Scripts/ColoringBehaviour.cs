@@ -12,7 +12,6 @@ public class ColoringBehaviour : MonoBehaviour
     private Color brushColor;
     private Texture2D brushTexture;
     private Texture2D canvasTexture;
-    private RaycastHit hitInfo;
 
     void Start()
     {
