@@ -10,7 +10,6 @@ public class ColoringBehaviour : MonoBehaviour
     public GameObject brushColorObject;
     public Slider SizeSlider;
     private Color brushColor;
-    private LineRenderer lineRenderer;
     private Texture2D brushTexture;
     private Texture2D canvasTexture;
     private RaycastHit hitInfo;
@@ -49,8 +48,6 @@ public class ColoringBehaviour : MonoBehaviour
                 }
             }
             Debug.DrawRay(ray.origin, ray.direction * 100, Color.green);
-            lineRenderer.SetPosition(0, ray.origin);
-            lineRenderer.SetPosition(1, ray.origin + ray.direction * 100);
         }
     }
 
