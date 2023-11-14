@@ -20,12 +20,12 @@ public class ColoringBehaviour : MonoBehaviour
         canvasTexture = new Texture2D(1024, 1024);
         rend.material.mainTexture = canvasTexture;
 
-        lineRenderer = gameObject.AddComponent<LineRenderer>();
-        lineRenderer.positionCount = 2;
-        lineRenderer.startWidth = 0.1f;
-        lineRenderer.endWidth = 0.1f;
-        lineRenderer.startColor = Color.green;
-        lineRenderer.endColor = Color.green;
+        //lineRenderer = gameObject.AddComponent<LineRenderer>();
+        //lineRenderer.positionCount = 2;
+        //lineRenderer.startWidth = 0.1f;
+        //lineRenderer.endWidth = 0.1f;
+        //lineRenderer.startColor = Color.green;
+        //lineRenderer.endColor = Color.green;
         brushColorObject = GameObject.Find("PickedColor");
     }
 
