@@ -8,8 +8,8 @@ public class ColoringBehaviour : MonoBehaviour
     public Camera mainCamera;
     public float brushSize = 50f;
     public GameObject brushColorObject;
+    public Slider SizeSlider;
     private Color brushColor;
-    private LineRenderer lineRenderer;
     private Texture2D brushTexture;
     private Texture2D canvasTexture;
     private RaycastHit hitInfo;
@@ -19,36 +19,35 @@ public class ColoringBehaviour : MonoBehaviour
         Renderer rend = GetComponent<Renderer>();
         canvasTexture = new Texture2D(1024, 1024);
         rend.material.mainTexture = canvasTexture;
-
-        //lineRenderer = gameObject.AddComponent<LineRenderer>();
-        //lineRenderer.positionCount = 2;
-        //lineRenderer.startWidth = 0.1f;
-        //lineRenderer.endWidth = 0.1f;
-        //lineRenderer.startColor = Color.green;
-        //lineRenderer.endColor = Color.green;
         brushColorObject = GameObject.Find("PickedColor");
+        SizeSlider = GameObject.Find("BrushSize").GetComponent<Slider>();
+
     }
 
     void Update()
     {
-        Debug.Log("hohohoho");
         brushColor = brushColorObject.GetComponent<Image>().color;
+        brushSize = SizeSlider.value;
         brushTexture = CreateBrushTexture((int)brushSize, brushColor);
         if (Input.GetMouseButton(0))
         {
-            Debug.Log("done");
             Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
             RaycastHit hitInfo;
             if (Physics.Raycast(ray, out hitInfo))
             {
-                Debug.Log("touched obejct");
-                Debug.Log(hitInfo.transform.name);
+                //Debug.Log("touched obejct");
+                //Debug.Log(hitInfo.transform.name);
 
                 if (hitInfo.transform == transform)
                 {
+                    Debug.Log("hit obejct-----------------------------");
+                    Debug.Log(hitInfo.transform.name);
+                    Debug.Log("obejct-----------------------------");
+                    Debug.Log(transform.name);
                     Paint(hitInfo.textureCoord);
                 }
             }
+            Debug.DrawRay(ray.origin, ray.direction * 100, Color.green);
         }
     }
 
