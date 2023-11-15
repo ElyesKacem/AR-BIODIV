@@ -5,7 +5,7 @@ using UnityEngine;
 public class ReplacableOnClick : MonoBehaviour
 {
     public GameObject prefab;
-    private bool isClicked;
+    public bool isClicked;
 
     private void Update()
     {
@@ -17,8 +17,9 @@ public class ReplacableOnClick : MonoBehaviour
 
     private void RemoveAndReplace()
     {
-        
         Destroy(this.gameObject);
+        CalculScript.ReplaceblesCount++;
+        Debug.Log(CalculScript.ReplaceblesCount);
         Instantiate(prefab, transform.position, Quaternion.Euler(0f, 0f, 0f));
     }
 }

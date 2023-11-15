@@ -28,7 +28,7 @@ public class CollectibleOnClick : MonoBehaviour
             Destroy(this.gameObject);
             CalculScript.collectiblesCount++;
             Debug.Log(CalculScript.collectiblesCount);
-            Instantiate(prefab, transform.position, Quaternion.Euler(-90f,0f,0f));
+            Instantiate(prefab, new Vector3(transform.position.x,0f,transform.position.z), Quaternion.Euler(-90f,0f,0f));
         }
     }
 }
