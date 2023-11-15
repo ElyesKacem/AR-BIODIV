@@ -11,6 +11,7 @@ public class UIScript : MonoBehaviour
 
     public Button musicButton;
     public Button soundButton;
+
     // Start is called before the first frame update
     void Start()
     {

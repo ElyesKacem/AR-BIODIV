@@ -7,24 +7,12 @@ using UnityEngine.XR.OpenXR.Input;
 public class CollectibleOnClick : MonoBehaviour
 {
     public GameObject prefab;
-    private bool isClicked = false;
-    private float jumpForce = 1f;
-    private float shrinkSpeed = 0.005f;
+    public bool isClicked = false;
+    public float jumpForce = 1f;
+    public float shrinkSpeed = 0.005f;
 
     private void Update()
     {
-        if (Input.GetMouseButtonDown(0))
-        {
-            Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
-            RaycastHit hitInfo;
-            if (Physics.Raycast(ray, out hitInfo))
-            {
-                if (hitInfo.transform == transform)
-                {
-                    isClicked = true;
-                }
-            }
-        }
         if (isClicked)
         {
             ShrinkAndDisappear();
@@ -37,7 +25,9 @@ public class CollectibleOnClick : MonoBehaviour
 
         if (transform.localScale.x <= 0f)
         {
-            Destroy(gameObject);
+            Destroy(this.gameObject);
+            CalculScript.archivment++;
+            Debug.Log(CalculScript.archivment);
             Instantiate(prefab, transform.position, Quaternion.Euler(-90f,0f,0f));
         }
     }
