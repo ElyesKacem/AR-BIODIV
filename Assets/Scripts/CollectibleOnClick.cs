@@ -26,8 +26,8 @@ public class CollectibleOnClick : MonoBehaviour
         if (transform.localScale.x <= 0f)
         {
             Destroy(this.gameObject);
-            CalculScript.archivment++;
-            Debug.Log(CalculScript.archivment);
+            CalculScript.collectiblesCount++;
+            Debug.Log(CalculScript.collectiblesCount);
             Instantiate(prefab, transform.position, Quaternion.Euler(-90f,0f,0f));
         }
     }

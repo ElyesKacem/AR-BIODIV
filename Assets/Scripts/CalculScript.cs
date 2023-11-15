@@ -4,13 +4,13 @@ using UnityEngine;
 
 public class CalculScript : MonoBehaviour
 {
-    public static int archivment=0;
+    public static int collectiblesCount=0;
     // Start is called before the first frame update
    
 
-    public void incrementArchivment()
+    public void incrementCollectiblesCount()
     {
-        archivment += 1;
+        collectiblesCount += 1;
     }
     public void turnOnEraser()
     {
