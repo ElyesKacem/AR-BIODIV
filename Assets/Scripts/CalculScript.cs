@@ -4,12 +4,9 @@ using UnityEngine;
 
 public class CalculScript : MonoBehaviour
 {
-    public static int archivment;
+    public static int archivment=0;
     // Start is called before the first frame update
-    void Start()
-    {
-        archivment = 0;
-    }
+   
 
     public void incrementArchivment()
     {
