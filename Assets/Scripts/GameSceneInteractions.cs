@@ -26,7 +26,12 @@ public class GameSceneInteractions : MonoBehaviour
                     hitInfo.transform.GetComponent<CollectibleOnClick>().isClicked = true;
                     Destroy(hitInfo.transform.GetComponent<BoxCollider>());
                 }
-                
+                if (hitInfo.transform.tag == "toReplace")
+                {
+                    hitInfo.transform.GetComponent<ReplacableOnClick>().isClicked = true;
+                    Destroy(hitInfo.transform.GetComponent<BoxCollider>());
+                }
+
             }
         }
     }
