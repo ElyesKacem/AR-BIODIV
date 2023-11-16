@@ -34,6 +34,9 @@ public class ReplacableOnClick : MonoBehaviour
 
         }
         
-        Instantiate(prefab, transform.position, Quaternion.Euler(0f, 0f, 0f));
+        //Instantiate(prefab, new Vector3(transform.position.x, -2f, transform.position.z), Quaternion.Euler(0f, 0f, 0f));
+        Instantiate(prefab, new Vector3(transform.position.x, -1f, transform.position.z), Quaternion.Euler(0f, 0f, 0f));
+        //Instantiate(prefab, new Vector3(transform.position.x, -3f, transform.position.z), Quaternion.Euler(0f, 0f, 0f));
+
     }
 }
