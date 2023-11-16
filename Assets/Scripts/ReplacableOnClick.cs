@@ -28,8 +28,10 @@ public class ReplacableOnClick : MonoBehaviour
         GameObject.Find("finalScore").GetComponent<TMP_Text>().text = ((CalculScript.collectiblesCount+CalculScript.ReplaceblesCount)*10).ToString();
         GameObject.Find("progressBar").GetComponent<Slider>().value = (CalculScript.collectiblesCount+CalculScript.ReplaceblesCount)*10;
         GameObject.Find("plantedTreeScore").GetComponent<TMP_Text>().text = CalculScript.ReplaceblesCount.ToString();
-        if(CalculScript.collectiblesCount+CalculScript.ReplaceblesCount==10){
-            GameObject.Find("DialogWin").SetActive(true);
+        if(CalculScript.ReplaceblesCount==5){
+           GameObject.Find("Canvas").transform.Find("DialogWin").gameObject.SetActive(true);
+           GameObject.Find("WinSound").GetComponent<AudioSource>().Play();
+
         }
         
         Instantiate(prefab, transform.position, Quaternion.Euler(0f, 0f, 0f));

@@ -33,11 +33,7 @@ public class CollectibleOnClick : MonoBehaviour
             GameObject.Find("progressBar").GetComponent<Slider>().value = (CalculScript.collectiblesCount + CalculScript.ReplaceblesCount) * 10;
             GameObject.Find("destroyedValue").GetComponent<TMP_Text>().text = CalculScript.collectiblesCount.ToString();
             
-            Instantiate(prefab, new Vector3(transform.position.x,0f,transform.position.z), Quaternion.Euler(-90f,0f,0f));
-
-            if(CalculScript.collectiblesCount+CalculScript.ReplaceblesCount==10){
-            GameObject.Find("DialogWin").SetActive(true);
-            }
+            Instantiate(prefab, new Vector3(transform.position.x,0f,transform.position.z), Quaternion.Euler(-90f,0f,0f));    
         }
     }
 }
