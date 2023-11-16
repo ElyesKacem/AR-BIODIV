@@ -1,7 +1,9 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEditor;
 using UnityEngine;
+using UnityEngine.UI;
 using UnityEngine.XR.OpenXR.Input;
 
 public class CollectibleOnClick : MonoBehaviour
@@ -27,8 +29,15 @@ public class CollectibleOnClick : MonoBehaviour
         {
             Destroy(this.gameObject);
             CalculScript.collectiblesCount++;
-            Debug.Log(CalculScript.collectiblesCount);
+            GameObject.Find("finalScore").GetComponent<TMP_Text>().text = ((CalculScript.collectiblesCount+CalculScript.ReplaceblesCount)*10).ToString();
+            GameObject.Find("progressBar").GetComponent<Slider>().value = (CalculScript.collectiblesCount + CalculScript.ReplaceblesCount) * 10;
+            GameObject.Find("destroyedValue").GetComponent<TMP_Text>().text = CalculScript.collectiblesCount.ToString();
+            
             Instantiate(prefab, new Vector3(transform.position.x,0f,transform.position.z), Quaternion.Euler(-90f,0f,0f));
+
+            if(CalculScript.collectiblesCount+CalculScript.ReplaceblesCount==10){
+            GameObject.Find("DialogWin").SetActive(true);
+            }
         }
     }
 }

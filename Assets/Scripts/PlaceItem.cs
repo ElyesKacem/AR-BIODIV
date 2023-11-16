@@ -12,6 +12,7 @@ public class PlaceItem : MonoBehaviour
     private GameObject prefab;
     private ARRaycastManager aRRaycastManager;
     private ARPlaneManager aRPlaneManager;
+    public static bool spawn = false;
 
     private List<ARRaycastHit> hits = new List<ARRaycastHit>();
     private bool isSpawned = false;
@@ -38,11 +39,15 @@ public class PlaceItem : MonoBehaviour
     private void FingerDown(EnhancedTouch.Finger finger)
     {
         if (finger.index != 0) return;
-        if (!isSpawned && aRRaycastManager.Raycast(finger.currentTouch.screenPosition,hits,TrackableType.PlaneWithinPolygon)){
+        if (!isSpawned && spawn && aRRaycastManager.Raycast(finger.currentTouch.screenPosition,hits,TrackableType.PlaneWithinPolygon)){
             foreach(ARRaycastHit hit in hits)
             {
                 Pose pose = hit.pose;
                 GameObject obj = Instantiate(prefab, pose.position, pose.rotation);
+                GameObject.Find("SuccessSound").GetComponent<AudioSource>().Play();
+                //GameObject.Find("DialogColoringQuest").SetActive(true);
+                GameObject.Find("Canvas").transform.Find("DialogColoringQuest").gameObject.SetActive(true);
+
                 isSpawned = true;
             }
         }
